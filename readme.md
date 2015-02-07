@@ -22,7 +22,7 @@ midi.setHandler(onMIDIEvent);
 function onMIDIEvent(e){
   var message = e.data[0] & 0xf0;
   if(message === 0x90){  // Note ON?
-    // 好きな処理
+    // anything!
   }
 }
 ```
