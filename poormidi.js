@@ -1,6 +1,8 @@
 // poormidi.js (Very Poor) Web MIDI API Wrapper
 // For Google Chrome Only :D
 
+// 2015.02.23 Change for P&P on Chrome Canary !!!! (W.I.P. and experimental now)
+
 var poormidi = function(){
   this.midi = null;
   this.inputs = [];
@@ -8,7 +10,10 @@ var poormidi = function(){
 
   this.success = function(access){
     console.log("poormidi.success()");
+
     this.midi = access;
+    this.inputs = [];
+    this.outputs = [];
 
     // inputs
     var it = this.midi.inputs.values();
@@ -62,6 +67,17 @@ var poormidi = function(){
       }
     }
   }.bind(this);
+
+  this.refreshPorts = function(){
+    navigator.requestMIDIAccess().then(this.success,this.failure);
+  }.bind(this);
+
+  this.onConnect = function(e){
+    console.log("poormidi.onConnect()");
+  }
+  this.onDisConnect = function(e){
+    console.log("poormidi.onDisConnect()");
+  }
 
   navigator.requestMIDIAccess().then(this.success,this.failure);
 };
