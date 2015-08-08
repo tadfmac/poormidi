@@ -34,6 +34,14 @@ function onMIDIEvent(e){
 midi.sendNoteOn(40,100);
 ```
 
+or
+
+```js
+// MIDI ch.=1, Note No.= 40, Velocity = 100
+midi.sendNoteOn(0, 40,100);
+```
+
+
 ### send Note Off
 
 ```js
