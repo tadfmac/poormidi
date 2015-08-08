@@ -40,6 +40,26 @@ var poormidi = function(){
     }
   }.bind(this);
 
+  this.sendNoteOff = function(note){
+    console.log("poormidi.sendNoteOff()");
+    if(this.outputs.length > 0){
+      for(var cnt=0;cnt<this.outputs.length;cnt++){
+        console.log("poormidi.sendNoteOff() output to :"+this.outputs[cnt].name);
+        this.outputs[cnt].send([0x80,note,0]);
+      }
+    }
+  }.bind(this);
+
+  this.sendCtlChange = function(number,value){
+    console.log("poormidi.sendCtlChange()");
+    if(this.outputs.length > 0){
+      for(var cnt=0;cnt<this.outputs.length;cnt++){
+        console.log("poormidi.sendCtlChange() output to :"+this.outputs[cnt].name);
+        this.outputs[cnt].send([0xB0,number&0x7f,value&0x7f]);
+      }
+    }
+  }.bind(this);
+
   this.onStateChange = function(){
     console.log("poormidi.onStateChange()");
     if(this.timer != null){
@@ -49,16 +69,6 @@ var poormidi = function(){
       this.refreshPorts();
       this.timer = null;
     }.bind(this),300);
-  }.bind(this);
-
-  this.sendNoteOff = function(note){
-    console.log("poormidi.sendNoteOff()");
-    if(this.outputs.length > 0){
-      for(var cnt=0;cnt<this.outputs.length;cnt++){
-        console.log("poormidi.sendNoteOff() output to :"+this.outputs[cnt].name);
-        this.outputs[cnt].send([0x80,note,0]);
-      }
-    }
   }.bind(this);
 
   this.refreshPorts = function(){

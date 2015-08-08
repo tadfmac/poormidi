@@ -41,6 +41,13 @@ midi.sendNoteOn(40,100);
 midi.sendNoteOff(40);
 ```
 
+### send Control Change
+
+```js
+// Control Number = 10, value = 100
+midi.sendCtlChange(10,100);
+```
+
 That's all!
 Enjoy! :D
 
