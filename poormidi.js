@@ -3,6 +3,7 @@
 
 // 2015.02.23 Change for P&P on Chrome Canary !!!! (W.I.P. and experimental now)
 // 2015.06.07 P&P feature has now supported.
+// 2015.08.08 add sendCtlChange()
 
 var poormidi = function(){
   this.midi = null;
