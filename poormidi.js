@@ -99,7 +99,7 @@ var poormidi = function(){
       value = arguments[1];
     }else if(arguments.length == 3){
       // midi.sendCtlChange(channel,number,value);
-      channel = arguments[0];
+      channel = arguments[0] & 0x0f;
       number = arguments[1];
       value = arguments[2];
     }else{
