@@ -9,7 +9,6 @@
 //            and also these can be omitted.
 //            See also comments in this code, for details.
 
-See also comments in this code, for details.
 var poormidi = function(){
   this.midi = null;
   this.inputs = [];
