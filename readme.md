@@ -59,4 +59,8 @@ midi.sendCtlChange(10,100);
 That's all!
 Enjoy! :D
 
+# License
+
+[Creative Commons Attribution 4.0](http://creativecommons.org/licenses/by/4.0/legalcode) 2015 by D.F.Mac.
+
 
