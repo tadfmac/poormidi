@@ -1,3 +1,6 @@
+// https://github.com/tadfmac/poormidi
+// CCby4.0 D.F.Mac.TripArts Music.
+
 // poormidi.js (Very Poor) Web MIDI API Wrapper
 // For Google Chrome Only :D
 

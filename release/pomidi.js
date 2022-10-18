@@ -1,3 +1,6 @@
+// https://github.com/tadfmac/poormidi
+// CCby4.0 D.F.Mac.TripArts Music.
+// 
 // pomidi.js (Very Poor) Web MIDI API Wrapper
 // For Google Chrome Only :D
 
@@ -12,29 +15,30 @@
 
 (()=> {
 
-pomidi = function(){
+pomidi = function(options){
   this.midi = null;
   this.inputs = [];
   this.outputs = [];
   this.timer = null;
 
   return new Promise((resolve,reject)=>{
-    this.init().then(()=>{
+    this.init(options).then(()=>{
       resolve(this);
+    },(err)=>{
+      reject(err);
     });
   });
 };
 
 pomidi.prototype = {
   
-  init : function(){
+  init : function(options){
     return new Promise((resolve,reject)=>{
-      navigator.requestMIDIAccess().then((access)=>{
+      navigator.requestMIDIAccess(options).then((access)=>{
         this.success(access);
         resolve(this); 
       },(err)=>{
-        this.failure(err);
-        reject();
+        reject(err);
       });
     });    
   },
@@ -46,6 +50,9 @@ pomidi.prototype = {
   setHandler : function (func){
     console.log("poormidi.setHandler()");
     this.onMidiEvent = func.bind(this);
+    for(var cnt=0;cnt<this.inputs.length;cnt++){
+      this.inputs[cnt].onmidimessage = this.onMidiEvent;
+    }
   },
 
   sendNoteOn : function (){
@@ -164,23 +171,11 @@ pomidi.prototype = {
     console.log("poormidi.refreshPorts() outputs: "+this.outputs.length);
   },
 
-  onConnect : function (e){
-    console.log("poormidi.onConnect()");
-  },
-
-  onDisConnect : function (e){
-    console.log("poormidi.onDisConnect()");
-  },
-
   success : function (access){
     console.log("poormidi.success()");
     this.midi = access;
     this.refreshPorts();
     this.midi.onstatechange = ()=>{this.onStateChange()};
-  },
-
-  failure : function (msg){
-    console.log("poormidi.failure(): "+msg);
   },
 
   wait: function (ms){
