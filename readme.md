@@ -61,6 +61,6 @@ Enjoy! :D
 
 # License
 
-[Creative Commons Attribution 4.0](http://creativecommons.org/licenses/by/4.0/legalcode) 2015 by D.F.Mac.
+[Creative Commons Attribution 4.0](http://creativecommons.org/licenses/by/4.0/legalcode) 2015-2022 by D.F.Mac.
 
 
